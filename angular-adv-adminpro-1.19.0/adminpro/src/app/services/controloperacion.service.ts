@@ -48,7 +48,7 @@ export class ControloperacionService {
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(id);
     const url = `${ base_url }/Tienda/TiendaBuscar`;
-    let res =  this.http.post( url,'{\n	"id":{id},\n}',{'headers':headers}) 
+    let res =  this.http.post( url,`{\n	"id":${id},\n}`,{'headers':headers}) 
     .pipe(
       map( (resp: {Codigo: boolean, Entidad: Tienda }) => resp.Entidad )
     )

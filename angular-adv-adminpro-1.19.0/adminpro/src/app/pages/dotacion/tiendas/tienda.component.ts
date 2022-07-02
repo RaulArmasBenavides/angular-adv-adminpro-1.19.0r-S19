@@ -32,6 +32,8 @@ export class TiendaComponent implements OnInit {
 
   this.tiendaForm = this.fb.group({
     Nombre: ['', Validators.required ],
+    dot_teo_pt :[''],
+    dot_teo_ft : [''],
     Direccion : ['' ],
     // hospital: ['', Validators.required ],
   });
