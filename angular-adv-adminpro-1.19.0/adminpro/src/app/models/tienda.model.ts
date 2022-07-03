@@ -40,4 +40,14 @@ export class Group {
       return !this.parent || (this.parent.visible && this.parent.expanded);
     }
   }
+
+
+  export class Distrito {
+
+    constructor(
+        public Nombre: string,
+        public IdDistrito?: string,
+    ) {}
+
+}
   
