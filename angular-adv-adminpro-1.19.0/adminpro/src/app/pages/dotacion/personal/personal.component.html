@@ -40,8 +40,8 @@
           <!-- <mat-cell *matCellDef="let element"> -->
           <mat-form-field >
           <mat-select  placeholder="" value="{{element.estatus_dot}}" >
-             <mat-option *ngFor="let dep of acc_desc " value="{{dep.acc_desc}}" >
-                        {{ dep.acc_desc }}
+             <mat-option *ngFor="let dep of liststatus " value="{{dep.idparametros}}" >
+                        {{ dep.Nombre }}
             </mat-option>
           </mat-select>
           </mat-form-field>

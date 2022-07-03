@@ -1,7 +1,7 @@
 import { Component, OnInit ,ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-//import { Personal } from '../../../interfaces/personal.interace';
+import { Param } from '../../../models/param.model';
 import { Personal } from '../../../models/personal.model';
 import { ControloperacionService } from '../../../services/controloperacion.service';
 import { Group} from 'src/app/models/tienda.model';
@@ -36,24 +36,23 @@ const data = [
   }
 ];
 
-
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
   styleUrls: ['./personal.component.css']
 })
 
-
 export class PersonalComponent implements OnInit {
 
   public isLoading: boolean = true;
   displayedColumns: string[] = ['Nombre', 'Apellidos', 'DNI','Cargo','estatus_dot', 'Tienda','actions'];
   public listapersonal = new MatTableDataSource<Personal | Group>([]);
+  public liststatus:Param[] = [];
   acc_desc: any;
   public groupByColumns: string[] = ['Tienda'];
   constructor( private copservice: ControloperacionService) { }
 
-  displayedColumns1 = ['acc_id', 'acc_desc'];
+  displayedColumns1 = ['idParam', 'Nombre'];
   //@ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
 private paginator: MatPaginator;
@@ -64,7 +63,8 @@ private paginator: MatPaginator;
 }
 
   ngOnInit(): void {
-     this.acc_desc = data;
+     this.cargarListPersonalStatus();
+     this.acc_desc = this.liststatus;
      this.cargarPersonal();
      this.listapersonal.filterPredicate = this.customFilterPredicate.bind(this);
      this.listapersonal.paginator =  this.paginator;
@@ -77,8 +77,7 @@ private paginator: MatPaginator;
          this.listapersonal.data = personal;
          this.isLoading =false;
          this.listapersonal.data = this.addGroups(personal, this.groupByColumns);
-      })
-
+      });
   }
 
   customFilterPredicate(data: Personal | Group, filter: string): boolean {
@@ -162,7 +161,14 @@ private paginator: MatPaginator;
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.listapersonal.filter = filterValue.trim().toLowerCase();
-}
+  }
+
+   cargarListPersonalStatus() {
+    this.copservice.cargarListPersonalStatus()
+      .subscribe( (status: Param[]) => {
+        this.liststatus = status;
+      })
+  }
 
   
 

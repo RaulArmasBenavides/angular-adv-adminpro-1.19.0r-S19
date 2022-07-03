@@ -85,39 +85,30 @@ export class TiendaComponent implements OnInit {
   }
 
   guardarTienda() {
-    console.log("guardando");
     this.tiendaForm.get('Distrito').valueChanges
     .subscribe( iddistrito => {
-      console.log("entrando");
-      console.log(iddistrito);
-      console.log(this.distritos);
       this.DistritoSeleccionado = this.distritos.find( distrito => distrito.iddistrito === iddistrito );
     });
-    console.log(this.tiendaForm.get('Distrito').value);
     const { idTienda,Nombre,dot_teo_ft,dot_teo_pt,jefe_zonal,Direccion } = this.tiendaForm.value;
+    const objTienda = {
+      tienda: {
+        idTienda: idTienda,
+        Nombre:Nombre,
+        dot_teo_ft:dot_teo_ft,
+        dot_teo_pt:dot_teo_pt,
+        jefe_zonal:jefe_zonal,
+        iddistrito:this.tiendaForm.get('Distrito').value,
+        Direccion: Direccion
+      },
+    };
+    console.log(objTienda);
    if ( this.tiendaSeleccionada ) {
-        //actualizar Tienda
-        const data = {
-          ...this.tiendaForm.value,
-          _id: this.tiendaSeleccionada.idTienda
-        }
-        this.copservice.ActualizarTienda( data )
+        this.copservice.ActualizarTienda(objTienda)
           .subscribe( resp => {
-            Swal.fire('Actualizada', `${ Nombre } actualizado correctamente`, 'success');
+            Swal.fire('Tienda actualizada', `${ Nombre } actualizada correctamente`, 'success');
           })
       } else {
           // registrar Tienda
-          const objTienda = {
-            tienda: {
-              idTienda: idTienda,
-              Nombre:Nombre,
-              dot_teo_ft:dot_teo_ft,
-              dot_teo_pt:dot_teo_pt,
-              jefe_zonal:jefe_zonal,
-              iddistrito:this.tiendaForm.get('Distrito').value,
-              Direccion: Direccion
-            },
-          };
           this.copservice.RegistrarTienda(objTienda)
             .subscribe( (resp: any) => {
               Swal.fire('Tienda Creada', `${ Nombre } creado correctamente`, 'success');
