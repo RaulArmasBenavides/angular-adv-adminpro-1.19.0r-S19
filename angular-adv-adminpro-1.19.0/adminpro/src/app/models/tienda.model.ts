@@ -46,7 +46,7 @@ export class Group {
 
     constructor(
         public Nombre: string,
-        public IdDistrito?: string,
+        public iddistrito?: string,
     ) {}
 
 }

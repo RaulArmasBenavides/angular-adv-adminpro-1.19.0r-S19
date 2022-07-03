@@ -26,7 +26,8 @@ import { CentrosComponent } from './mantenimientos/centros/centros.component';
 import { PersonalComponent } from './dotacion/personal/personal.component';
 import { TiendasComponent } from './dotacion/tiendas/tiendas.component';
 import { TiendaComponent } from './dotacion/tiendas/tienda.component';
- 
+import { RequerimientoComponent } from './dotacion/requerimiento/requerimiento.component';
+import { RequerimientosComponent } from './dotacion/requerimiento/requerimientos.component';
 
 //importing components from angular material 
 import {MatButtonModule} from '@angular/material/button';
@@ -61,7 +62,9 @@ import { ControlComponent } from './dotacion/control/control.component';
     PersonalComponent,
     TiendasComponent,
     TiendaComponent,
-    ControlComponent
+    ControlComponent,
+    RequerimientoComponent,
+    RequerimientosComponent
   ],
   exports: [
     DashboardComponent,

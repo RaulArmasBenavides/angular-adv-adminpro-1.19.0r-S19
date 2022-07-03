@@ -80,10 +80,10 @@
                         <div class="col-sm-9">
                             <div class="input-group">
                                 <select class="form-control"
-                                        formControlName="distrito">
+                                        formControlName="Distrito">
                                     <option value="">Seleccione Distrito</option>
                                     <option *ngFor="let distrito of distritos"
-                                        [value]="distrito.IdDistrito">
+                                        [value]="distrito.iddistrito">
                                         {{ distrito.Nombre }}
                                     </option>
                                 </select>
@@ -136,13 +136,13 @@
     </div> -->
 
 
-    <div class="col animated fadeIn fast"  
+    <!-- <div class="col animated fadeIn fast"  
     *ngIf="DistritoSeleccionado">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Hospital</h4>
-            <h6 class="card-subtitle">{{ DistritoSeleccionado.IdDistrito }}</h6>
+            <h4 class="card-title">Distrito</h4>
+            <h6 class="card-subtitle">{{ DistritoSeleccionado.iddistrito }}</h6>
         </div>
     </div>
-</div>
+    </div> -->
 </div>

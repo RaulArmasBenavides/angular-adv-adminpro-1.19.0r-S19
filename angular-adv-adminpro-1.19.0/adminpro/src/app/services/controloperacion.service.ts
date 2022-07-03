@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Tienda,Control,Distrito } from '../models/tienda.model';
+import {Requerimiento} from '../models/reque.model';
 import { Personal } from '../models/personal.model';
 const base_url = environment.base_urltamb;
 
@@ -119,5 +120,17 @@ export class ControloperacionService {
                 map( (resp: {codigo: boolean, listajson: Personal[] }) => resp.listajson )
               );
   }
+
+
+
+  //REQUERIMIENTO
+  cargarRequerimientos() {
+    const url = `${ base_url }/Reque/RequeListar`;
+    return this.http.get( url)
+              .pipe(
+                map( (resp: {codigo: boolean, listajson: Requerimiento[] }) => resp.listajson )
+              );
+  }
+
 
 }

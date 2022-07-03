@@ -42,17 +42,6 @@ export class TiendaComponent implements OnInit {
 
   //this.cargarTiendas();
   this.cargarDistritos();
-  
-
-  this.tiendaForm.get('distrito').valueChanges
-    .subscribe( DistritID => {
-      console.log(DistritID);
-      console.log(this.distritos);
-      this.DistritoSeleccionado = this.distritos.find( distrito => distrito.IdDistrito === DistritID );
-      console.log(DistritID);
-    }) 
-
-    console.log(this.DistritoSeleccionado.IdDistrito);
 }
 
 //métodos de servicios
@@ -97,9 +86,15 @@ export class TiendaComponent implements OnInit {
 
   guardarTienda() {
     console.log("guardando");
-    console.log(this.tiendaForm.get('distrito').value);
-  const { idTienda,Nombre,dot_teo_ft,dot_teo_pt,jefe_zonal,Direccion } = this.tiendaForm.value;
-  console.log("guardando");
+    this.tiendaForm.get('Distrito').valueChanges
+    .subscribe( iddistrito => {
+      console.log("entrando");
+      console.log(iddistrito);
+      console.log(this.distritos);
+      this.DistritoSeleccionado = this.distritos.find( distrito => distrito.iddistrito === iddistrito );
+    });
+    console.log(this.tiendaForm.get('Distrito').value);
+    const { idTienda,Nombre,dot_teo_ft,dot_teo_pt,jefe_zonal,Direccion } = this.tiendaForm.value;
    if ( this.tiendaSeleccionada ) {
         //actualizar Tienda
         const data = {
@@ -119,7 +114,7 @@ export class TiendaComponent implements OnInit {
               dot_teo_ft:dot_teo_ft,
               dot_teo_pt:dot_teo_pt,
               jefe_zonal:jefe_zonal,
-              iddistrito:this.DistritoSeleccionado.IdDistrito,
+              iddistrito:this.tiendaForm.get('Distrito').value,
               Direccion: Direccion
             },
           };
