@@ -37,12 +37,10 @@
          <td mat-cell *matCellDef="let element"> {{element.Cargo}} </td>
       </ng-container>
     
-      <!-- Account Description Column -->
+      <!-- ESTATUS PERSONAL-->
       <ng-container matColumnDef="estatus_dot">
         <th mat-header-cell *matHeaderCellDef> ESTATUS </th>
-        <!-- <mat-header-cell *matHeaderCellDef> ESTATUS </mat-header-cell> -->
         <td mat-cell *matCellDef="let element"> 
-          <!-- <mat-cell *matCellDef="let element"> -->
           <mat-form-field >
           <mat-select  placeholder="" value="{{element.estatus_dot}}" >
              <mat-option *ngFor="let dep of liststatus " value="{{dep.idparametros}}" >
@@ -51,7 +49,6 @@
           </mat-select>
           </mat-form-field>
         </td>
-        <!-- </mat-cell> -->
       </ng-container>
 
       <!-- Tienda -->
