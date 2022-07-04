@@ -1,5 +1,4 @@
 export class Personal {
-
     constructor(
         public idEmpleado: string,
         public ApPaterno: string,

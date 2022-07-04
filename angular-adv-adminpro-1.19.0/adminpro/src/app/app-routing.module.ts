@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 // Modulos
 import { PagesRoutingModule } from './pages/pages.routing';
 import { AuthRoutingModule } from './auth/auth.routing';
-
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 
 

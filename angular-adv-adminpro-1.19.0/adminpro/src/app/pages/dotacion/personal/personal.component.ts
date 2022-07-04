@@ -47,6 +47,7 @@ export class PersonalComponent implements OnInit {
   public isLoading: boolean = true;
   displayedColumns: string[] = ['Nombre', 'Apellidos', 'DNI','Cargo','estatus_dot', 'Tienda','actions'];
   public listapersonal = new MatTableDataSource<Personal | Group>([]);
+  public personallist:Personal[] = [];
   public liststatus:Param[] = [];
   acc_desc: any;
   public groupByColumns: string[] = ['Tienda'];
@@ -66,16 +67,21 @@ private paginator: MatPaginator;
      this.cargarListPersonalStatus();
      this.acc_desc = this.liststatus;
      this.cargarPersonal();
-     this.listapersonal.filterPredicate = this.customFilterPredicate.bind(this);
+    //  this.listapersonal.filterPredicate = this.customFilterPredicate.bind(this);
      this.listapersonal.paginator =  this.paginator;
-  }
+     //filtering by column
+     //this.listapersonal.filterPredicate = (data: Personal, filter: string) => {
+     //   return data.Nombre == filter;
+     //};
+   }
 
   cargarPersonal() {
     this.isLoading =true;
     this.copservice.cargarPersonal()
        .subscribe( (personal: Personal[]) => {
-         this.listapersonal.data = personal;
+         this.personallist = personal;
          this.isLoading =false;
+         this.listapersonal.paginator =  this.paginator;
          this.listapersonal.data = this.addGroups(personal, this.groupByColumns);
       });
   }
@@ -108,7 +114,7 @@ private paginator: MatPaginator;
 
   groupHeaderClick(row) {
     row.expanded = !row.expanded
-    this.listapersonal.filter = performance.now().toString();  // hack to trigger filter refresh
+    //this.listapersonal.filter = performance.now().toString();  // hack to trigger filter refresh
   }
 
   addGroups(data: Personal[], groupByColumns: string[]): Personal[] {
@@ -170,6 +176,13 @@ private paginator: MatPaginator;
       })
   }
 
+  //filtering 
+  public doFilter = (value:string) => {    
+    this.listapersonal.filter = value;
+  }
+
+
+  
   
 
 }

@@ -23,7 +23,6 @@ export class TiendasComponent implements OnInit {
     this.tiendas.paginator = this.paginator;
   }
 
-
   ngOnInit(): void {
     this.cargarTienda();
     this.tiendas.paginator =  this.paginator;
@@ -36,5 +35,10 @@ export class TiendasComponent implements OnInit {
          this.isLoading =false;
       })
   }
+
+    //filtering 
+    public doFilter = (value:string) => {    
+      this.tiendas.filter = value;
+    }
 
 }

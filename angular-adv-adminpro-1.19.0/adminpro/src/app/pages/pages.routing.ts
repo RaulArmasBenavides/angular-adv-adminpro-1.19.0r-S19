@@ -25,6 +25,8 @@ import { RequerimientoComponent } from './dotacion/requerimiento/requerimiento.c
 import { TiendasComponent } from './dotacion/tiendas/tiendas.component';
 import { TiendaComponent } from './dotacion/tiendas/tienda.component';
 import { ControlComponent } from './dotacion/control/control.component';
+import { RequerimientosComponent } from './dotacion/requerimiento/requerimientos.component';
+import { SincgeoComponent } from './dotacion/personal/sincgeo.component';
 
 
 
@@ -49,11 +51,12 @@ const routes: Routes = [
             { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Matenimiento de Medicos' }},
             { path: 'centros', component: CentrosComponent, data: { titulo: 'Centros de vacunación' }},
             { path: 'personal', component: PersonalComponent, data: { titulo: 'Personal dotación' }},
+            { path: 'sincgeo', component: SincgeoComponent, data: { titulo: 'Sincronización GeoVictoria' }},
             { path: 'tiendas', component: TiendasComponent, data: { titulo: 'Tiendas Tambo' }},
             { path: 'tienda/:idTienda', component: TiendaComponent, data: { titulo: 'Matenimiento de Tienda' }},
             { path: 'control', component: ControlComponent, data: { titulo: 'Control de dotación' }},
-            //formularios 
-            { path: 'requerimientos', component: RequerimientoComponent, data: { titulo: 'Requerimientos'}},
+            { path: 'requerimientos', component: RequerimientosComponent, data: { titulo: 'Requerimientos de dotación'}},
+            { path: 'reque/:idRequerimiento', component: RequerimientoComponent, data: { titulo: 'Mantenimiento de Requerimientos'}},
             // Rutas de Admin
             { path: 'usuarios', canActivate: [ AdminGuard ], component: UsuariosComponent, data: { titulo: 'Matenimiento de Usuarios' }},
         ]

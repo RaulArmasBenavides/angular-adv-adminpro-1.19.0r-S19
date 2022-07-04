@@ -1,70 +1,28 @@
-<!-- <div class="table-striped">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th class="w100">Foto</th>
-                <th>Nombre</th>
-                <th>Dot FT</th>
-                <th>Dot PT</th>
-                <th>Jefe Zonal</th>
-                <th class="w100 text-nowrap">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let tien of tiendas">
-                <td class="text-center"> 
-                    <!-- <img [src]="medico.img | imagen:'medicos'" 
-                        [alt]="medico.nombre"
-                        class="w100 cursor"
-                        (click)="abrirModal(medico)"> 
-                </td>
-                <td>
-                    {{ tien.Nombre }}
-                </td>
-                <td>
-                    {{ tien.dot_teo_ft }}
-                </td>
-                <td>
-                    {{ tien.dot_teo_pt }}
-                </td>
-                <td>
-                    {{ tien.jefe_zonal }}
-                </td>
-                <td class="text-nowrap text-center">
-                    <a [routerLink]="['/dashboard','tienda', tien._id ]" 
-                        data-toggle="tooltip" 
-                        data-original-title="Editar">
-                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
-                    </a>
-                    
-                    <!-- <a class="cursor"
-                        data-toggle="tooltip" 
-                        data-original-title="Borrar"
-                        (click)="borrarMedico( medico )"> 
-                        <i class="fa fa-close text-danger"></i> 
-                    </a> 
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
-</div> -->
-<div class="col">
-    <div class="text-right">
-        <a class="btn btn-primary"
-           routerLink="/dashboard/tienda/0">
-            <i class="fa fa-hospital-o"></i> 
-            Registar Nueva Tienda
-        </a>
-    </div>
-</div>
-
-
 <div  *ngIf="!isLoading">
-    <table mat-table [dataSource]="tiendas" class="mat-elevation-z8">
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+    <!-- <div class="col">
+        <div class="text-left">
+            <a class="btn btn-primary"
+               routerLink="/dashboard/tienda/0">
+                <i class="fa fa-hospital-o"></i> 
+                Registar Nueva Tienda
+            </a>
+        </div>
+    </div> -->
+    <div>
+      <button mat-raised-button color="primary"
+          [routerLink]="['/dashboard','tienda', 0 ]" 
+          data-toggle="tooltip" 
+          data-original-title="Register">Registrar Nueva Tienda
+      </button>
+    </div>
     
+    <div fxLayout fxLayoutAlign="center center">
+        <mat-form-field fxFlex="40%">
+          <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+    <table mat-table [dataSource]="tiendas" class="mat-elevation-z8">
       <!-- nombres -->
       <ng-container matColumnDef="Nombre">
         <th mat-header-cell *matHeaderCellDef> Nombre </th>
@@ -119,7 +77,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator [length]="2000"
-    [pageSize]="5"
+    [pageSize]="20"
     [pageSizeOptions]="[20, 50, 100, 150]">
 </mat-paginator>
 </div>

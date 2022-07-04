@@ -28,7 +28,7 @@ import { TiendasComponent } from './dotacion/tiendas/tiendas.component';
 import { TiendaComponent } from './dotacion/tiendas/tienda.component';
 import { RequerimientoComponent } from './dotacion/requerimiento/requerimiento.component';
 import { RequerimientosComponent } from './dotacion/requerimiento/requerimientos.component';
-
+import { SincgeoComponent } from './dotacion/personal/sincgeo.component';
 //importing components from angular material 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -41,7 +41,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ControlComponent } from './dotacion/control/control.component';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ControlComponent } from './dotacion/control/control.component';
     TiendaComponent,
     ControlComponent,
     RequerimientoComponent,
-    RequerimientosComponent
+    RequerimientosComponent,
+    SincgeoComponent
   ],
   exports: [
     DashboardComponent,
@@ -89,7 +91,9 @@ import { ControlComponent } from './dotacion/control/control.component';
     MatTableModule,
     MatSelectModule,
     MatPaginatorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class PagesModule { }

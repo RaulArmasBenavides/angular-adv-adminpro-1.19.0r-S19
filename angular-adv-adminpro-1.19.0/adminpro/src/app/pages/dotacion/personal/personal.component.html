@@ -1,13 +1,18 @@
 <div  *ngIf="!isLoading">
   
-    <!-- <mat-form-field appearance="standard">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
-    </mat-form-field> -->
-    <table mat-table [dataSource]="listapersonal" class="mat-elevation-z8">
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+    <button mat-raised-button color="primary"
+    [routerLink]="['/dashboard','sincgeo']" 
+    data-toggle="tooltip" 
+    data-original-title="Sync">Sincronizar Data de Geovictoria</button>
+
+
+    <div fxLayout fxLayoutAlign="center center">
+      <mat-form-field fxFlex="40%">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
     
+    <table mat-table [dataSource]="listapersonal" class="mat-elevation-z8">
       <!-- nombres -->
       <ng-container matColumnDef="Nombre">
         <th mat-header-cell *matHeaderCellDef> Nombres. </th>

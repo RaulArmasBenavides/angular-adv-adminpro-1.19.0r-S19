@@ -13,7 +13,7 @@ export class RequerimientosComponent implements OnInit {
 
   public requerimientos = new MatTableDataSource<Requerimiento>([]);
   public isLoading: boolean = true;
-  displayedColumns: string[] = ['Nombre', 'dot_teo_ft', 'dot_teo_pt','jefe_zonal','Distrito', 'Direccion','actions'];
+  displayedColumns: string[] = ['sol_dot', 'Tienda', 'Motivo','Descripcion','actions'];
   constructor( private copservice: ControloperacionService) { }
 
   private paginator: MatPaginator;
@@ -24,6 +24,8 @@ export class RequerimientosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cargarRequerimientos();
+    this.requerimientos.paginator =  this.paginator;
   }
 
   cargarRequerimientos() {
@@ -33,5 +35,10 @@ export class RequerimientosComponent implements OnInit {
          this.isLoading =false;
       })
   }
+
+   //filtering 
+    doFilter = (value:string) => {    
+      this.requerimientos.filter = value;
+   }
 
 }
