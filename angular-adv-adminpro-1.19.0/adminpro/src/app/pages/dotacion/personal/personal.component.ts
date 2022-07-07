@@ -5,7 +5,7 @@ import { Param } from '../../../models/param.model';
 import { Personal } from '../../../models/personal.model';
 import { ControloperacionService } from '../../../services/controloperacion.service';
 import { Group} from 'src/app/models/tienda.model';
-
+import Swal from 'sweetalert2';
 const data = [
   {
     "acc_id": 1001,
@@ -181,6 +181,15 @@ private paginator: MatPaginator;
     this.listapersonal.filter = value;
   }
 
+
+  guardarCambios( pers: Personal ) {
+
+    this.copservice.actualizarPersonalStatusDotacion( pers.idEmpleado, pers.estatus_dot )
+        .subscribe( resp => {
+          Swal.fire( 'Actualizado', pers.Nombre, 'success' );
+        });
+
+  }
 
   
   

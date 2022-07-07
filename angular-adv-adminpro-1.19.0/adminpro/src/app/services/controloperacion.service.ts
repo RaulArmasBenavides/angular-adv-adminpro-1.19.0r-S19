@@ -119,5 +119,11 @@ export class ControloperacionService {
               );
   }
 
+  actualizarPersonalStatusDotacion( _id: string, estatus_dot: string  ) {
+    const url = `${ base_url }/Empleado/EmpleadoActualizarStatusDot/${ _id }`;
+    return this.http.put( url, { estatus_dot }, this.headers );
+  }
+
+
 
 }
