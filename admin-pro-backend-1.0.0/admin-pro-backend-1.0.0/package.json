@@ -19,6 +19,9 @@
     "google-auth-library": "^6.0.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.21",
+    "nodemon": "^2.0.19",
+    "to": "^0.2.9",
+    "update": "^0.7.4",
     "uuid": "^8.2.0"
   }
 }

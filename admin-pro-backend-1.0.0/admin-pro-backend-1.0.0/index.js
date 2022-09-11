@@ -28,7 +28,7 @@ app.use( '/api/medicos', require('./routes/medicos') );
 app.use( '/api/todo', require('./routes/busquedas') );
 app.use( '/api/login', require('./routes/auth') );
 app.use( '/api/upload', require('./routes/uploads') );
-
+app.use( '/api/notificacion', require('./routes/notificacion') );
 
 
 app.listen( process.env.PORT, () => {
