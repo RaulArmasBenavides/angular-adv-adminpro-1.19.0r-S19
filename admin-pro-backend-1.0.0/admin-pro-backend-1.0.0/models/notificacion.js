@@ -1,38 +1,22 @@
 const { Schema, model } = require('mongoose');
 
+
 const NotificacionSchema = Schema({
-    Nombre: {
-        type: String,
-        required: true
-    },
-    pacienteNombre: {
-        type: String,
-        required: true
-    },
-    pacienteApellido: {
-        type: String,
-        required: true
-    },
-    pacienteEdad: {
-        type: Number,
-        required: true
-    },
-    RS: {
-        type: String,
-        required: true
-    },
-    Cantidad: {
-        type: Number,
-        required: true
-    },
+    // Codigo: {
+    //     type: String,
+    //     required: true
+    // },
     // img: {
     //     type: String,
     // },
-    // usuario: {
-    //     required: true,
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Usuario'
-    // }
+    medicamento: {
+        type:Object,
+        required: true,
+    },
+    paciente: {
+        type:Object,
+        required: true,
+    }
 });
 
 

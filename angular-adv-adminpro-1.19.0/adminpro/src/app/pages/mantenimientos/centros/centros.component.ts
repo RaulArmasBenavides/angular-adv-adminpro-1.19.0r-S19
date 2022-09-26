@@ -23,6 +23,9 @@ export class CentrosComponent implements OnInit {
   displayedColumns: string[] = ['codigo', 'descripcion', 'precio'];
   dataSource:any;//'ELEMENT_DATA;
   datos: Articulo[] = [];
+  //datos de fechas 
+  date = new Date((new Date().getTime())); 
+  myDate = Date.now();    //date 
   constructor() { }
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   ngOnInit(): void {
@@ -30,6 +33,9 @@ export class CentrosComponent implements OnInit {
     this.datos.push(new Articulo(x, `artículo ${x}`, Math.trunc(Math.random() * 1000)));
     this.dataSource = new MatTableDataSource<Articulo>(this.datos);
     this.dataSource.paginator =  this.paginator;
+
+    console.log(this.date);
+    console.log(this.myDate);
   }
 
 }
