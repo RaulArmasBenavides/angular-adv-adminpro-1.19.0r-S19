@@ -63,6 +63,4 @@ router.delete( '/:id',
 //     getMedicoById
 // );
 
-
-
 module.exports = router;
