@@ -32,6 +32,7 @@ export class ModalImagenService {
         this.img = img;
       } else {
         this.img = `${ base_url }/upload/${ tipo }/${ img }`;
+        console.log(this.img);
       }
   }
 
