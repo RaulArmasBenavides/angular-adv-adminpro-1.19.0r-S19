@@ -21,9 +21,6 @@ export class AdminGuard implements CanActivate {
         this.router.navigateByUrl('/dashboard');
         return false;
       }
-
-      // return (this.usuarioService.role === 'ADMIN_ROLE') ? true : false;
-
   }
   
 }
