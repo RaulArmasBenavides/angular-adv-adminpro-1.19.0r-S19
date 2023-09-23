@@ -1,21 +1,20 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
 
-// declare const gapi:any;
+ declare const google:any;
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [ './login.component.css' ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   public formSubmitted = false;
-  public auth2: any;
-
+  @ViewChild('googleBtn') googleBtn!: ElementRef;
   public loginForm = this.fb.group({
     email: [ localStorage.getItem('email') || '' , [ Validators.required, Validators.email ] ],
     password: ['', Validators.required ],
@@ -29,8 +28,24 @@ export class LoginComponent implements OnInit {
                private ngZone: NgZone ) { }
 
   ngOnInit(): void {
-    this.renderButton();
+ 
   }
+
+  ngAfterViewInit() :void{
+    this.googleInit();
+  }
+
+  googleInit(){
+		google.accounts.id.initialize({
+			 client_id: '273923021809-47kj07huaf1a636u5un4iaucpuacs76c.apps.googleusercontent.com',
+			 callback:(response:any) => this.handleCredentialResponse(response)
+		});
+		google.accounts.id.renderButton( 
+		  //document.getElementById("buttonDiv"),
+		  this.googleBtn.nativeElement, 
+		  {theme:"outline",size:"large"}
+		);
+	}
 
 
   login() {
@@ -54,38 +69,18 @@ export class LoginComponent implements OnInit {
 
   }
   
-  renderButton() {
-  
-    this.startApp();
+  handleCredentialResponse(response:any){
+		this.usuarioService.loginGoogle(response.credential).subscribe(resp=>{
+				console.log(resp);
+				if(resp.ok){
+					this.router.navigateByUrl('/main');
+					// this.usuarioService.guardarLocalStorage(resp.token, "") //setToken(resp.token);
+				}
+			});
+		 console.log("Encoded JWT ID token " + response.credential)
+	  }
+   
 
-  }
-
-  async startApp() {
-    
-    // await this.usuarioService.googleInit();
-    // this.auth2 = this.usuarioService.auth2;
-
-    // this.attachSignin( document.getElementById('my-signin2') );
-    
-  };
-
-  attachSignin(element) {
-    
-    this.auth2.attachClickHandler( element, {},
-        (googleUser) => {
-            const id_token = googleUser.getAuthResponse().id_token;
-            // console.log(id_token);
-            this.usuarioService.loginGoogle( id_token )
-              .subscribe( resp => {
-                // Navegar al Dashboard
-                this.ngZone.run( () => {
-                  this.router.navigateByUrl('/');
-                })
-              });
-
-        }, (error) => {
-            alert(JSON.stringify(error, undefined, 2));
-        });
-  }
+ 
 
 }
