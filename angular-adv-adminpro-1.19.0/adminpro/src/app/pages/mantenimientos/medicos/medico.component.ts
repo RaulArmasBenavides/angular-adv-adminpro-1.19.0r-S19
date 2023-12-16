@@ -18,11 +18,11 @@ import { delay } from 'rxjs/operators';
 })
 export class MedicoComponent implements OnInit {
 
-  public medicoForm: FormGroup;
+  public medicoForm!: FormGroup;
   public hospitales: Hospital[] = [];
   
-  public medicoSeleccionado: Medico;
-  public hospitalSeleccionado: Hospital;
+  public medicoSeleccionado!: Medico;
+  public hospitalSeleccionado!: Hospital;
 
 
 
@@ -44,9 +44,13 @@ export class MedicoComponent implements OnInit {
 
     this.cargarHospitales();
 
-    this.medicoForm.get('hospital').valueChanges
+    this.medicoForm.get('hospital')?.valueChanges
         .subscribe( hospitalId => {
-          this.hospitalSeleccionado = this.hospitales.find( h => h._id === hospitalId );
+        const hospitalEncontrado = this.hospitales.find( h => h._id === hospitalId );
+        if(hospitalEncontrado){
+          this.hospitalSeleccionado = hospitalEncontrado;
+        }
+       
         })
   }
 
@@ -66,8 +70,11 @@ export class MedicoComponent implements OnInit {
           return this.router.navigateByUrl(`/dashboard/medicos`);
         }
 
-        const { nombre, hospital:{ _id } } = medico; 
+
         this.medicoSeleccionado = medico;
+
+
+        const { nombre, hospital:{ _id } } = medico as { nombre: string, hospital: Hospital };
         this.medicoForm.setValue({ nombre, hospital: _id });
       });
 

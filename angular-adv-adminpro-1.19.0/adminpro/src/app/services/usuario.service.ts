@@ -23,7 +23,7 @@ declare const gapi: any;
 export class UsuarioService {
 
   public auth2: any;
-  public usuario: Usuario;
+  public usuario!: Usuario;
 
   constructor( private http: HttpClient, 
                 private router: Router,
@@ -37,7 +37,7 @@ export class UsuarioService {
   }
 
   get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
-    return this.usuario.role;
+    return this.usuario.role ??'USER_ROLE';
   }
 
   get uid():string {
@@ -123,11 +123,9 @@ export class UsuarioService {
 
     data = {
       ...data,
-      role: this.usuario.role
+      role: this.usuario.role?? ""
     }
-
     return this.http.put(`${ base_url }/usuarios/${ this.uid }`, data, this.headers );
-
   }
 
   login( formData: LoginForm ) {
@@ -141,7 +139,7 @@ export class UsuarioService {
 
   }
 
-  loginGoogle( token ) {
+  loginGoogle( token : any ) {
     
     return this.http.post(`${ base_url }/login/google`, { token } )
                 .pipe(

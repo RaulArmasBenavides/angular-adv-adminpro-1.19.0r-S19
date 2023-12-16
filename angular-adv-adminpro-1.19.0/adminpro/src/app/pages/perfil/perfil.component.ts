@@ -15,9 +15,9 @@ import { Usuario } from '../../models/usuario.model';
 })
 export class PerfilComponent implements OnInit {
 
-  public perfilForm: FormGroup;
+  public perfilForm!: FormGroup;
   public usuario: Usuario;
-  public imagenSubir: File;
+  public imagenSubir!: File;
   public imgTemp: any = null;
 
   constructor( private fb: FormBuilder,
@@ -67,6 +67,11 @@ export class PerfilComponent implements OnInit {
   }
 
   subirImagen() {
+
+    if(!this.usuario.uid){
+      Swal.fire('Error', 'No se pudo subir la imagen', 'error');
+      return;
+    }
 
     this.fileUploadService
       .actualizarFoto( this.imagenSubir, 'usuarios', this.usuario.uid )

@@ -30,17 +30,17 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 // import { RequerimientosComponent } from './dotacion/requerimiento/requerimientos.component';
 // import { SincgeoComponent } from './dotacion/personal/sincgeo.component';
 //importing components from angular material 
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from  '@angular/material/divider';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatTableModule} from '@angular/material/table';
-import {MatSelectModule} from '@angular/material/select';
-import { MatPaginatorModule } from '@angular/material/paginator';
+// import {MatButtonModule} from '@angular/material/button';
+// import {MatIconModule} from '@angular/material/icon';
+// import {MatDividerModule} from  '@angular/material/divider';
+// import {MatDatepickerModule} from '@angular/material/datepicker';
+// import {MatTableModule} from '@angular/material/table';
+// import {MatSelectModule} from '@angular/material/select';
+// import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ControlComponent } from './dotacion/control/control.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+// import { MatFormFieldModule } from '@angular/material/form-field';
+// import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -76,16 +76,8 @@ import { MatInputModule } from '@angular/material/input';
     ComponentsModule,
     PipesModule,
     //material
-    MatButtonModule,
-    MatIconModule,
-    MatDividerModule,
-    MatDatepickerModule,
-    MatTableModule,
-    MatSelectModule,
-    MatPaginatorModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule
+  
+    BrowserAnimationsModule
   ]
 })
 export class PagesModule { }

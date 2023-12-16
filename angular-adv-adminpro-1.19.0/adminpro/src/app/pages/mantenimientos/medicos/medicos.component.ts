@@ -19,7 +19,7 @@ export class MedicosComponent implements OnInit, OnDestroy {
 
   public cargando: boolean = true;
   public medicos: Medico[] = [];
-  private imgSubs: Subscription;
+  private imgSubs!: Subscription;
 
   constructor( private medicoService: MedicoService,
                private modalImagenService: ModalImagenService,
@@ -32,7 +32,7 @@ export class MedicosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.cargarMedicos();
 
-    this.imgSubs = this.imgSubs = this.modalImagenService.nuevaImagen
+    this.imgSubs = this.modalImagenService.nuevaImagen
       .pipe(delay(100))
       .subscribe( img => this.cargarMedicos() );
   }
@@ -61,6 +61,7 @@ export class MedicosComponent implements OnInit, OnDestroy {
 
   abrirModal(medico: Medico) {
 
+    if (medico._id)
     this.modalImagenService.abrirModal( 'medicos', medico._id, medico.img );
 
   }
@@ -76,7 +77,7 @@ export class MedicosComponent implements OnInit, OnDestroy {
     }).then((result) => {
       if (result.value) {
         
-        this.medicoService.borrarMedico( medico._id )
+        this.medicoService.borrarMedico( medico._id??"" )
           .subscribe( resp => {
             
             this.cargarMedicos();

@@ -120,6 +120,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
 
   abrirModal( usuario: Usuario ) {
   
+    if(usuario.uid)
     this.modalImagenService.abrirModal('usuarios', usuario.uid, usuario.img );
   }
 

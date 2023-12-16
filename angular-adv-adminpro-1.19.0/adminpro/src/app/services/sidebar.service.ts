@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
   
-  public menu = [];
+  public menu :any= [];
 
   cargarMenu() {
     this.menu = JSON.parse(localStorage.getItem('menu')) || [];

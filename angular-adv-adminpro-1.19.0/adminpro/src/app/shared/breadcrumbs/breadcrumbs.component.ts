@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class BreadcrumbsComponent implements OnDestroy {
 
-  public titulo: string;
+  public titulo: string = "";
   public tituloSubs$: Subscription;
 
   
