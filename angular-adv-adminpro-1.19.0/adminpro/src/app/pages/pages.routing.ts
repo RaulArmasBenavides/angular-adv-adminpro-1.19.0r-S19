@@ -19,14 +19,7 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
-import { CentrosComponent } from './mantenimientos/centros/centros.component';
-import { PersonalComponent } from './dotacion/personal/personal.component';
-import { RequerimientoComponent } from './dotacion/requerimiento/requerimiento.component';
-import { TiendasComponent } from './dotacion/tiendas/tiendas.component';
-import { TiendaComponent } from './dotacion/tiendas/tienda.component';
-import { ControlComponent } from './dotacion/control/control.component';
-import { RequerimientosComponent } from './dotacion/requerimiento/requerimientos.component';
-import { SincgeoComponent } from './dotacion/personal/sincgeo.component';
+ 
 
 
 
@@ -49,14 +42,7 @@ const routes: Routes = [
             { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Matenimiento de Hospitales' }},
             { path: 'medicos', component: MedicosComponent, data: { titulo: 'Matenimiento de Medicos' }},
             { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Matenimiento de Medicos' }},
-            { path: 'centros', component: CentrosComponent, data: { titulo: 'Centros de vacunación' }},
-            { path: 'personal', component: PersonalComponent, data: { titulo: 'Personal dotación' }},
-            { path: 'sincgeo', component: SincgeoComponent, data: { titulo: 'Sincronización GeoVictoria' }},
-            { path: 'tiendas', component: TiendasComponent, data: { titulo: 'Tiendas Tambo' }},
-            { path: 'tienda/:idTienda', component: TiendaComponent, data: { titulo: 'Matenimiento de Tienda' }},
-            { path: 'control', component: ControlComponent, data: { titulo: 'Control de dotación' }},
-            { path: 'requerimientos', component: RequerimientosComponent, data: { titulo: 'Requerimientos de dotación'}},
-            { path: 'reque/:idRequerimiento', component: RequerimientoComponent, data: { titulo: 'Mantenimiento de Requerimientos'}},
+ 
             // Rutas de Admin
             { path: 'usuarios', canActivate: [ AdminGuard ], component: UsuariosComponent, data: { titulo: 'Matenimiento de Usuarios' }},
         ]

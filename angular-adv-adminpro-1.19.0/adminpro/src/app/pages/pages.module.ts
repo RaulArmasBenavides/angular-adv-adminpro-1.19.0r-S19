@@ -22,13 +22,13 @@ import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.comp
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-import { CentrosComponent } from './mantenimientos/centros/centros.component';
-import { PersonalComponent } from './dotacion/personal/personal.component';
-import { TiendasComponent } from './dotacion/tiendas/tiendas.component';
-import { TiendaComponent } from './dotacion/tiendas/tienda.component';
-import { RequerimientoComponent } from './dotacion/requerimiento/requerimiento.component';
-import { RequerimientosComponent } from './dotacion/requerimiento/requerimientos.component';
-import { SincgeoComponent } from './dotacion/personal/sincgeo.component';
+// import { CentrosComponent } from './mantenimientos/centros/centros.component';
+// import { PersonalComponent } from './dotacion/personal/personal.component';
+// import { TiendasComponent } from './dotacion/tiendas/tiendas.component';
+// import { TiendaComponent } from './dotacion/tiendas/tienda.component';
+// import { RequerimientoComponent } from './dotacion/requerimiento/requerimiento.component';
+// import { RequerimientosComponent } from './dotacion/requerimiento/requerimientos.component';
+// import { SincgeoComponent } from './dotacion/personal/sincgeo.component';
 //importing components from angular material 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -37,10 +37,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ControlComponent } from './dotacion/control/control.component';
+// import { ControlComponent } from './dotacion/control/control.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -59,14 +57,8 @@ import { MatInputModule } from '@angular/material/input';
     MedicosComponent,
     MedicoComponent,
     BusquedaComponent,
-    CentrosComponent,
-    PersonalComponent,
-    TiendasComponent,
-    TiendaComponent,
-    ControlComponent,
-    RequerimientoComponent,
-    RequerimientosComponent,
-    SincgeoComponent
+ 
+ 
   ],
   exports: [
     DashboardComponent,
